@@ -14,7 +14,6 @@ import { PromptFolders } from './components/PromptFolders';
 import { PromptbarSettings } from './components/PromptbarSettings';
 import { Prompts } from './components/Prompts';
 
-import Sidebar from '../Sidebar';
 import PromptbarContext from './PromptBar.context';
 import { PromptbarInitialState, initialState } from './Promptbar.state';
 
@@ -125,26 +124,6 @@ const Promptbar = () => {
         handleUpdatePrompt,
       }}
     >
-      <Sidebar<Prompt>
-        side={'right'}
-        isOpen={showPromptbar}
-        addItemButtonTitle={t('New prompt')}
-        itemComponent={
-          <Prompts
-            prompts={filteredPrompts.filter((prompt) => !prompt.folderId)}
-          />
-        }
-        folderComponent={<PromptFolders />}
-        items={filteredPrompts}
-        searchTerm={searchTerm}
-        handleSearchTerm={(searchTerm: string) =>
-          promptDispatch({ field: 'searchTerm', value: searchTerm })
-        }
-        toggleOpen={handleTogglePromptbar}
-        handleCreateItem={handleCreatePrompt}
-        handleCreateFolder={() => handleCreateFolder(t('New folder'), 'prompt')}
-        handleDrop={handleDrop}
-      />
     </PromptbarContext.Provider>
   );
 };

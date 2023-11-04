@@ -19,7 +19,7 @@ export const ClearConversations: FC<Props> = ({ onClearConversations }) => {
     setIsConfirming(false);
   };
 
-  return isConfirming ? (
+  return (
     <div className="flex w-full cursor-pointer items-center rounded-lg py-3 px-3 hover:bg-gray-500/10">
       <IconTrash size={18} />
 
@@ -47,11 +47,5 @@ export const ClearConversations: FC<Props> = ({ onClearConversations }) => {
         />
       </div>
     </div>
-  ) : (
-    <SidebarButton
-      text={t('Clear conversations')}
-      icon={<IconTrash size={18} />}
-      onClick={() => setIsConfirming(true)}
-    />
   );
 };

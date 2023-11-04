@@ -20,7 +20,6 @@ import { ChatFolders } from './components/ChatFolders';
 import { ChatbarSettings } from './components/ChatbarSettings';
 import { Conversations } from './components/Conversations';
 
-import Sidebar from '../Sidebar';
 import ChatbarContext from './Chatbar.context';
 import { ChatbarInitialState, initialState } from './Chatbar.state';
 
@@ -219,23 +218,6 @@ export const Chatbar = () => {
         handleApiKeyChange,
       }}
     >
-      <Sidebar<Conversation>
-        side={'left'}
-        isOpen={showChatbar}
-        addItemButtonTitle={t('New chat')}
-        itemComponent={<Conversations conversations={filteredConversations} />}
-        folderComponent={<ChatFolders searchTerm={searchTerm} />}
-        items={filteredConversations}
-        searchTerm={searchTerm}
-        handleSearchTerm={(searchTerm: string) =>
-          chatDispatch({ field: 'searchTerm', value: searchTerm })
-        }
-        toggleOpen={handleToggleChatbar}
-        handleCreateItem={handleNewConversation}
-        handleCreateFolder={() => handleCreateFolder(t('New folder'), 'chat')}
-        handleDrop={handleDrop}
-        footerComponent={<ChatbarSettings />}
-      />
     </ChatbarContext.Provider>
   );
 };

@@ -14,7 +14,6 @@ import {
 
 import { Prompt } from '@/types/prompt';
 
-import SidebarActionButton from '@/components/Buttons/SidebarActionButton';
 
 import PromptbarContext from '../PromptBar.context';
 import { PromptModal } from './PromptModal';
@@ -97,26 +96,6 @@ export const PromptComponent = ({ prompt }: Props) => {
           {prompt.name}
         </div>
       </button>
-
-      {(isDeleting || isRenaming) && (
-        <div className="absolute right-1 z-10 flex text-gray-300">
-          <SidebarActionButton handleClick={handleDelete}>
-            <IconCheck size={18} />
-          </SidebarActionButton>
-
-          <SidebarActionButton handleClick={handleCancelDelete}>
-            <IconX size={18} />
-          </SidebarActionButton>
-        </div>
-      )}
-
-      {!isDeleting && !isRenaming && (
-        <div className="absolute right-1 z-10 flex text-gray-300">
-          <SidebarActionButton handleClick={handleOpenDeleteModal}>
-            <IconTrash size={18} />
-          </SidebarActionButton>
-        </div>
-      )}
 
       {showModal && (
         <PromptModal

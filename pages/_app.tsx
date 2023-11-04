@@ -14,6 +14,7 @@ function App({ Component, pageProps }: AppProps<{}>) {
 
   return (
     <div className={inter.className}>
+      HELLO I'M HERE
       <Toaster />
       <QueryClientProvider client={queryClient}>
         <Component {...pageProps} />

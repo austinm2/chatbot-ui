@@ -18,7 +18,6 @@ import { FolderInterface } from '@/types/folder';
 
 import HomeContext from '@/pages/api/home/home.context';
 
-import SidebarActionButton from '@/components/Buttons/SidebarActionButton';
 
 interface Props {
   currentFolder: FolderInterface;
@@ -131,57 +130,6 @@ const Folder = ({
           </button>
         )}
 
-        {(isDeleting || isRenaming) && (
-          <div className="absolute right-1 z-10 flex text-gray-300">
-            <SidebarActionButton
-              handleClick={(e) => {
-                e.stopPropagation();
-
-                if (isDeleting) {
-                  handleDeleteFolder(currentFolder.id);
-                } else if (isRenaming) {
-                  handleRename();
-                }
-
-                setIsDeleting(false);
-                setIsRenaming(false);
-              }}
-            >
-              <IconCheck size={18} />
-            </SidebarActionButton>
-            <SidebarActionButton
-              handleClick={(e) => {
-                e.stopPropagation();
-                setIsDeleting(false);
-                setIsRenaming(false);
-              }}
-            >
-              <IconX size={18} />
-            </SidebarActionButton>
-          </div>
-        )}
-
-        {!isDeleting && !isRenaming && (
-          <div className="absolute right-1 z-10 flex text-gray-300">
-            <SidebarActionButton
-              handleClick={(e) => {
-                e.stopPropagation();
-                setIsRenaming(true);
-                setRenameValue(currentFolder.name);
-              }}
-            >
-              <IconPencil size={18} />
-            </SidebarActionButton>
-            <SidebarActionButton
-              handleClick={(e) => {
-                e.stopPropagation();
-                setIsDeleting(true);
-              }}
-            >
-              <IconTrash size={18} />
-            </SidebarActionButton>
-          </div>
-        )}
       </div>
 
       {isOpen ? folderComponent : null}

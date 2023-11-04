@@ -34,7 +34,7 @@ export const Key: FC<Props> = ({ apiKey, onApiKeyChange }) => {
     }
   }, [isChanging]);
 
-  return isChanging ? (
+  return (
     <div className="duration:200 flex w-full cursor-pointer items-center rounded-md py-3 px-3 transition-colors hover:bg-gray-500/10">
       <IconKey size={18} />
 
@@ -69,11 +69,5 @@ export const Key: FC<Props> = ({ apiKey, onApiKeyChange }) => {
         />
       </div>
     </div>
-  ) : (
-    <SidebarButton
-      text={t('OpenAI API Key')}
-      icon={<IconKey size={18} />}
-      onClick={() => setIsChanging(true)}
-    />
   );
 };
